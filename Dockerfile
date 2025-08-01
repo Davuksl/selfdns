@@ -1,11 +1,8 @@
 FROM coredns/coredns:latest
 
-# Копируем Corefile конфиг
-COPY CoreFile /etc/coredns/Corefile
+COPY Corefile /etc/coredns/Corefile
 
-# Убедимся, что /coredns исполняемый
-RUN chmod +x /coredns
+# chmod +x не нужен, т.к. исполняемый файл уже есть
 
-# Указываем точку входа и команду запуска
 ENTRYPOINT ["/coredns"]
 CMD ["-conf", "/etc/coredns/Corefile"]

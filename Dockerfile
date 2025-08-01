@@ -6,7 +6,7 @@ RUN curl -L https://github.com/coredns/coredns/releases/download/v1.12.2/coredns
     | tar -xz -C /usr/local/bin
 
 # Копируем Corefile и зону
-COPY Corefile /etc/coredns/Corefile
+COPY CoreFile /etc/coredns/Corefile
 COPY zones /zones
 
 # HTTP порт для Render

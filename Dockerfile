@@ -1,7 +1,7 @@
 FROM coredns/coredns:latest
 
 # Копируем Corefile конфиг
-COPY Corefile /etc/coredns/Corefile
+COPY CoreFile /etc/coredns/Corefile
 
 # Убедимся, что /coredns исполняемый
 RUN chmod +x /coredns

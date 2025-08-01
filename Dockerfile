@@ -1,8 +1,5 @@
 FROM coredns/coredns:latest
 
-COPY CoreFile /etc/coredns/CoreFile
+COPY CoreFile /etc/coredns/Corefile
 
-# chmod +x не нужен, т.к. исполняемый файл уже есть
-
-ENTRYPOINT ["/coredns"]
-CMD ["-conf", "/etc/coredns/CoreFile"]
+CMD ["/coredns", "-conf", "/etc/coredns/Corefile"]

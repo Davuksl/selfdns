@@ -1,6 +1,6 @@
-. {
-    bind 0.0.0.0
+.:53 {
+    file /zones/db.root.zone .
     log
     reload
-    file /zones/db.root.zone
+    errors
 }

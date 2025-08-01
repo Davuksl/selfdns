@@ -1,4 +1,11 @@
 FROM coredns/coredns:latest
-COPY CoreFile /etc/coredns/Corefile
-EXPOSE 53/udp
-EXPOSE 53/tcp
+
+# Копируем Corefile конфиг
+COPY Corefile /etc/coredns/Corefile
+
+# Убедимся, что /coredns исполняемый
+RUN chmod +x /coredns
+
+# Указываем точку входа и команду запуска
+ENTRYPOINT ["/coredns"]
+CMD ["-conf", "/etc/coredns/Corefile"]

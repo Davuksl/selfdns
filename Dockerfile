@@ -1,20 +1,15 @@
 FROM alpine:3.20
 
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl tar
 
-# Получаем архитектуру и качаем нужный бинарь
-RUN ARCH=$(uname -m) && \
-    if [ "$ARCH" = "x86_64" ]; then \
-      ARCHSTR="amd64"; \
-    elif [ "$ARCH" = "aarch64" ]; then \
-      ARCHSTR="arm64"; \
-    else \
-      echo "Unsupported architecture: $ARCH"; exit 1; \
-    fi && \
-    curl -L -o /coredns "https://github.com/coredns/coredns/releases/latest/download/coredns_${ARCHSTR}" && \
-    chmod +x /coredns
+ENV VERSION=1.12.2
+ENV ARCH=amd64
+
+# Скачиваем и распаковываем бинарник
+RUN curl -L https://github.com/coredns/coredns/releases/download/v${VERSION}/coredns_${VERSION}_linux_${ARCH}.tgz \
+    | tar -xz -C /usr/local/bin
 
 COPY CoreFile /etc/coredns/Corefile
 
-ENTRYPOINT ["/coredns"]
-CMD ["-conf", "/etc/coredns/Corefile"]
+WORKDIR /etc/coredns
+CMD ["/usr/local/bin/coredns", "-conf", "/etc/coredns/Corefile"]

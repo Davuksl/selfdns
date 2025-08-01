@@ -1,6 +1,6 @@
 FROM coredns/coredns:latest
 
-COPY Corefile /etc/coredns/CoreFile
+COPY CoreFile /etc/coredns/CoreFile
 
 # chmod +x не нужен, т.к. исполняемый файл уже есть
 

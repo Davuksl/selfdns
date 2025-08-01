@@ -1,0 +1,19 @@
+$TTL 3600
+@   IN  SOA ns1.local. admin.local. (
+        2025080101 ; serial
+        3600       ; refresh
+        1800       ; retry
+        604800     ; expire
+        86400 )    ; minimum
+
+@       IN  NS      ns1.local.
+@       IN  NS      ns2.local.
+
+ns1     IN  A       127.0.0.1
+ns2     IN  A       127.0.0.1
+
+banana.com.   IN A   2.2.2.2
+kek.net.      IN A   3.3.3.3
+lol.us.       IN A   4.4.4.4
+google.com.   IN A   9.9.9.9  ; да, даже Google теперь твой
+spiderkaras.lol IN CNAME www.dmenu.me

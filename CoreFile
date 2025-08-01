@@ -1,0 +1,6 @@
+. {
+    bind 0.0.0.0
+    log
+    reload
+    file /zones/db.root.zone
+}

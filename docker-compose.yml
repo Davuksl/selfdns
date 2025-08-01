@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  coredns:
+    image: coredns/coredns:latest
+    container_name: mydns
+    ports:
+      - "8053:53/udp"
+      - "8053:53/tcp"
+    volumes:
+      - ./Corefile:/Corefile
+      - ./zones:/zones
+    restart: unless-stopped
